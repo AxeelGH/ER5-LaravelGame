@@ -16,7 +16,11 @@ Route::post('/login', function (Request $request){
     ->first();
 
     if($user){
+        echo("Correct credentials");
         return response()->json(['ok'=>true]);
+        
     }
+    echo("Incorrect credentials");
     return response()->json(['ok'=>false],401);
+    
 });
