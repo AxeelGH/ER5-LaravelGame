@@ -2,17 +2,20 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
 
 
-
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
 
 
 
 Route::post('/login', function (Request $request){
-    if(Auth::attempt(['email'=>$request->email,'password'=>$request->password])){
+
+    $user = DB::table('users')
+    ->where('email', $request->email)
+    ->where('password', $request->password)
+    ->first();
+
+    if($user){
         return response()->json(['ok'=>true]);
     }
     return response()->json(['ok'=>false],401);
