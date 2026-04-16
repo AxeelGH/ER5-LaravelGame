@@ -16,8 +16,13 @@ class LoginController extends Controller
     ->first();
 
     if($user){
+        $token = bin2hex(random_bytes(32));
+
+        DB::table('users')
+        ->where('id',$user->id)
+        ->update(['remember_token'=>$token]);
         Log::info('Valid credentials',['email'=>$request->email]);
-        return response()->json(['ok'=>true,]);
+        return response()->json(['ok'=>true,'token'=>$token]);
         
     }
     Log::warning('Invalid credentials',['email'=>$request->email]);
