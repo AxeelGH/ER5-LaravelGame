@@ -2,10 +2,14 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Facades\Auth;
+
 
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
+
+
 
 Route::post('/login', function (Request $request){
     if(Auth::attempt(['email'=>$request->email,'password'=>$request->password])){
