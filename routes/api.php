@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Http\Facades\Auth;
+
 
 
 Route::get('/user', function (Request $request) {
