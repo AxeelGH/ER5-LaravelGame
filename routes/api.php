@@ -11,4 +11,4 @@ use Illuminate\Support\Facades\DB;
 
 
 Route::post('/login', [LoginController::class, 'login']);
-Route::post('/stats', [GameStatisticsController::class, 'stats']);
+Route::post('/stats', [GameStatisticsController::class, 'store']);
