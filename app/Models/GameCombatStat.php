@@ -16,7 +16,7 @@ class GameCombatStat extends Model
         'enemies_killed',
         'damage_done',
         'damage_taken',
-        'succesful_retreats',
+        'successful_retreats',
         'failed_retreats',
     ];
 
@@ -24,7 +24,7 @@ class GameCombatStat extends Model
         'enemies_killed'       => 'integer',
         'damage_done'          => 'integer',
         'damage_taken'         => 'integer',
-        'succesful_retreats'   => 'integer',
+        'successful_retreats'  => 'integer',
         'failed_retreats'      => 'integer',
     ];
 
