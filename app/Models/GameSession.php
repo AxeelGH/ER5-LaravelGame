@@ -32,4 +32,10 @@ class GameSession extends Model
         return $this->hasOne(GameCombatStat::class, 'session_id');
     }
 
+    public function combatStats(): HasOne{
+
+        return $this->hasOne(GameCombatStat::class, 'session_id');
+    }
+
+
 }

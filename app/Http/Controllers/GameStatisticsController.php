@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
+
+use App\Models\GameSession;
+use App\Models\GameCombatStat;
+use App\Http\Requests\StoreGameStatisticsRequest;
 
 class GameStatisticsController extends Controller
 {
