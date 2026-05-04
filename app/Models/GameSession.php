@@ -30,7 +30,7 @@ class GameSession extends Model
 
     public function player(): BelongsTo
     {
-        return $this->belongsTo(GameCombatStat::class, 'session_id');
+        return $this->belongsTo(Player::class);
     }
 
     public function combatStats(): HasOne{

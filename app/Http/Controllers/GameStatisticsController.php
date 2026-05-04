@@ -7,10 +7,6 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
-use App\Models\GameSession;
-use App\Models\GameCombatStat;
-use App\Http\Requests\StoreGameStatisticsRequest;
-
 class GameStatisticsController extends Controller
 {
     public function store(StoreGameStatisticsRequest $request): JsonResponse
@@ -30,7 +26,7 @@ class GameStatisticsController extends Controller
             ]);
 
             GameCombatStat::create([
-                'session_id'          => $data['session_id'],
+                'session_id'          => $session->id,
                 'enemies_killed'      => $data['enemies_killed'],    
                 'damage_done'         => $data['damage_done'], 
                 'damage_taken'        => $data['damage_taken'],  
