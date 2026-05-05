@@ -15,7 +15,7 @@ class StoreGameStatisticsRequest extends FormRequest
     {
         return [
             'session_id' => 'required|string',
-            'player_id' => 'required|string',
+            'player_id' => 'required|integer',
             'started_at' => 'required|date',
             'finished_at' => 'required|date',
             'result' => 'required|string',
