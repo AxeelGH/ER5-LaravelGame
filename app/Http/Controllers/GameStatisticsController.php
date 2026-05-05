@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
+use App\Models\GameSession;
+use App\Models\GameCombatStat;
+use App\Http\Requests\StoreGameStatisticsRequest;
+
 class GameStatisticsController extends Controller
 {
     public function store(StoreGameStatisticsRequest $request): JsonResponse

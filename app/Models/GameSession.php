@@ -9,6 +9,8 @@ use App\Models\GameCombatStat;
 
 class GameSession extends Model
 {
+    const CREATED_AT = 'created_at';
+    const UPDATED_AT = null;
     public $incrementing = false;
     protected $keyType = 'string';
 
@@ -30,7 +32,7 @@ class GameSession extends Model
 
     public function player(): BelongsTo
     {
-        return $this->belongsTo(Player::class);
+        return $this->belongsTo(Users::class);
     }
 
     public function combatStats(): HasOne{

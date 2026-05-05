@@ -11,6 +11,7 @@ class GameCombatStat extends Model
     protected $primaryKey = 'session_id';
     public $incrementing = false;
     protected $keyType = 'string';
+    public $timestamps = false;
 
     protected $fillable = [
         'session_id',
