@@ -18,26 +18,26 @@ class GameStatisticsController extends Controller
         
         $data = $request->validated();
 
-
+        $data = str_replace('"',"'",$data);
 
         $session = DB::transaction(function() use($data) {
             $session = GameSession::create([
-                'id'             =>  $data['session_id'].replace('"', "'"),
-                'player_id'      =>  $data['player_id'].replace('"', "'"),
-                'started_at'     =>  $data['started_at'].replace('"', "'"),
-                'finished_at'    =>  $data['finished_at'].replace('"', "'"),
-                'result'         =>  $data['result'].replace('"', "'"),
-                'final_score'    =>  $data['final_score'].replace('"', "'"),
-                'level_reached'  =>  $data['level_reached'].replace('"', "'"),
+                'id'             =>  $data['session_id'],
+                'player_id'      =>  $data['player_id'],
+                'started_at'     =>  $data['started_at'],
+                'finished_at'    =>  $data['finished_at'],
+                'result'         =>  $data['result'],
+                'final_score'    =>  $data['final_score'],
+                'level_reached'  =>  $data['level_reached'],
             ]);
 
             GameCombatStat::create([
                 'session_id'          => $session->id,
-                'enemies_killed'      => $data['enemies_killed'].replace('"', "'"),    
-                'damage_done'         => $data['damage_done'].replace('"', "'"), 
-                'damage_taken'        => $data['damage_taken'].replace('"', "'"),  
-                'successful_retreats' => $data['successful_retreats'].replace('"', "'"),         
-                'failed_retreats'     => $data['failed_retreats'].replace('"', "'"),     
+                'enemies_killed'      => $data['enemies_killed'],    
+                'damage_done'         => $data['damage_done'], 
+                'damage_taken'        => $data['damage_taken'],  
+                'successful_retreats' => $data['successful_retreats'],         
+                'failed_retreats'     => $data['failed_retreats'],     
             ]);
 
             return $session;
