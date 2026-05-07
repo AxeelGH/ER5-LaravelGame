@@ -3,18 +3,21 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Log;
 
 class StoreGameStatisticsRequest extends FormRequest
 {
     public function authorize(): bool
     {
+        Log::info('Data test');
         return true;
     }
 
     public function rules(): array
     {
+        Log::info('array');
         return [
-            'session_id' => 'required|string',
+            'session_id' => 'required|uuid',
             'player_id' => 'required|integer',
             'started_at' => 'required|date',
             'finished_at' => 'required|date',

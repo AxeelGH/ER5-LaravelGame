@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use App\Models\GameCombatStat;
+use Illuminate\Support\Str;
 
 class GameSession extends Model
 {
@@ -30,9 +31,19 @@ class GameSession extends Model
         'final_score' => 'integer',
     ];
 
+    protected static function boot()
+    {
+        parent::boot();
+        static::creating(function ($model) {
+            if (empty($model->id)) {
+                $model->id = (string) Str::uuid();
+            }
+        });
+    }
+
     public function player(): BelongsTo
     {
-        return $this->belongsTo(Users::class);
+        return $this->belongsTo(User::class, 'player_id');
     }
 
     public function combatStats(): HasOne{
