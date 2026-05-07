@@ -13,7 +13,7 @@ class GameStatisticsController extends Controller
     {
         $data = $request->validated();
 
-        try {
+       
             $session = DB::transaction(function () use ($data) {
 
                 $sessionId = (string) $data['session_id'];
@@ -41,19 +41,5 @@ class GameStatisticsController extends Controller
             });
 
             return response()->json(['session_id' => $session->id], 201);
-
-        } catch (\Throwable $e) {
-            Log::error('Failed to store game stats', [
-                'error'   => $e->getMessage(),
-                'file'    => $e->getFile(),
-                'line'    => $e->getLine(),
-                'trace'   => $e->getTraceAsString()
-            ]);
-
-            return response()->json([
-                'message' => 'Error al guardar las estadísticas de la partida.',
-                'detail'  => config('app.debug') ? $e->getMessage() : null
-            ], 500);
-        }
     }
 }
