@@ -23,6 +23,7 @@ class GameCombatStat extends Model
     ];
 
     protected $casts = [
+        'session_id'           => 'string', 
         'enemies_killed'       => 'integer',
         'damage_done'          => 'integer',
         'damage_taken'         => 'integer',
