@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Models\GameSession;
 use App\Http\Requests\StoreGameStatisticsRequest;
+use App\Models\GameCombatStat;
 
 class GameStatisticsController extends Controller
 {
@@ -29,7 +30,8 @@ class GameStatisticsController extends Controller
                 ]);
 
 
-                $session->combatStats()->create([
+                GameCombatStat::create([
+                    'session_id'          => $session->id,
                     'enemies_killed'      => $data['enemies_killed'],
                     'damage_done'         => $data['damage_done'],
                     'damage_taken'        => $data['damage_taken'],
